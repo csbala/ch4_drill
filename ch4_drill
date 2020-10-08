@@ -1,0 +1,67 @@
+#include "std_lib_facilities.h"
+
+struct data{
+
+	int original_number;
+	string value;
+	int number_in_cm;
+};
+
+int main()
+{
+	double number1=0,number2=0;
+	vector <double> t;
+
+	/*while(cin>>number1>>number2)
+	{
+		
+		if(number1>number2){
+			cout<<"the smaller value is: "<<number2<<endl;
+			cout<<"the larger value is: "<<number1<<endl;
+			if(abs(number1-number2)<0.01){cout<<"The numbers are almost equal."<<endl;}
+
+		}
+		if(number1<number2){
+			cout<<"the smaller value is: "<<number1<<endl;
+			cout<<"the larger value is: "<<number2<<endl;
+			if(abs(number2-number1)<=0.01){cout<<"The numbers are almost equal."<<endl;}
+
+		}
+		if(number1==number2){
+			cout<<"The numbers are equal."<<endl;
+		}
+
+	}*/
+	
+	int tsize=0;
+	string values;
+	while(cin>>number1>>values)
+	{
+		if(values=="|"){break;}
+			
+		if(values=="in"){number1=number1*2.54;}
+		if(values=="ft"){number1=number1*2.54*12;}
+		if(values=="m"){number1=number1*100;}
+
+		if(values!="cm" && values!="in" && values!="ft" && values!="m"){
+			
+			cout<<"cant do that\n";
+		}
+		else{
+
+		t.push_back(number1);
+		
+	}//else vége
+
+	}//while vége
+
+		tsize=t.size();
+		sort(t);
+		cout<<"The smallest so far: "<< t[0]/100<<" m\n";
+		cout<<"The largest so far: "<< t[tsize-1]/100<<" m\n";
+
+	return 0;
+}
+
+
+
