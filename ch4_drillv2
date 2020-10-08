@@ -1,0 +1,74 @@
+#include "std_lib_facilities.h"
+
+struct data{
+
+	float	original_number;
+	string value;
+	float number_in_cm;
+};
+
+int main()
+{
+	//double number1=0,number2=0;
+	vector <data> t;
+	data trash;
+
+	while(cin>>trash.original_number>>trash.value){
+		
+		if(trash.value=="|"){break;}
+
+		if(trash.value=="cm"){trash.number_in_cm=trash.original_number;}
+		if(trash.value=="in"){trash.number_in_cm=trash.original_number*2.54;}
+		if(trash.value=="ft"){trash.number_in_cm=trash.original_number*2.54*12;}
+		if(trash.value=="m"){trash.number_in_cm=trash.original_number*100;}
+
+		if(trash.value!="cm" && trash.value!="in" && trash.value!="ft" && trash.value!="m"){
+			
+			cout<<"Can identify\n";
+		}
+		else{
+
+		t.push_back(trash);
+		
+	}//else vége
+
+	}//while vége
+	int size=t.size();
+	int a=0;
+	string b;
+	//rendezés(csökenö sorrendbe)
+	for(int i=0;i<size;i++){
+		for(int j=i;j<size;j++){
+			if(t[i].number_in_cm>t[j].number_in_cm){
+				
+				a=t[i].number_in_cm;
+				t[i].number_in_cm=t[j].number_in_cm;
+				t[j].number_in_cm=a;
+
+				a=t[i].original_number;
+				t[i].original_number=t[j].original_number;
+				t[j].original_number=a;
+
+				b=t[i].value;
+				t[i].value=t[j].value;
+				t[j].value=b;
+			}
+		}
+	}
+
+	for(int i=0;i<size;i++){
+		cout<<t[i].original_number<<" "<<t[i].value<<", ";
+	}
+	cout<<endl;
+	for(int i=0;i<size;i++){
+		
+		cout<<t[i].number_in_cm/100<<" "<<"m"<<", ";
+
+	}
+	cout<<endl;
+
+	return 0;
+}
+
+
+
